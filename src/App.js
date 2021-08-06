@@ -19,19 +19,12 @@ class App extends Component {
     .then(users => this.setState({monsters: users}))
   }
 
+  // pass data to the component to render
   render() {
     return (
       <div className="App">
       {/* Props and children props */}
-      <CardList name="Afif">
-        {
-          this.state.monsters.map( monster => 
-            <h1 key={monster.id}>
-              {monster.name}
-            </h1>
-          )
-        }
-      </CardList>
+      <CardList monsters={this.state.monsters} />
       </div>
     )
   }
