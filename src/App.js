@@ -21,6 +21,7 @@ class App extends Component {
       .then(users => this.setState({ monsters: users }))
   }
 
+  // arrow function does bind any refs to this inside of it, to the context which was define
   handleChange = (e) => {
     this.setState({ searchFields: e.target.value });
   }
@@ -38,6 +39,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <h1>Monsters Rolodex</h1>
         {/* Handle changing values in the search field*/}
         <SearchBox 
           placeholder="search monsters"
