@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
+import {CardList} from './components/card-list/card-list.component'
 
 class App extends Component {
   constructor() {
@@ -11,6 +12,7 @@ class App extends Component {
     };
   }
 
+  // fetch external data and set current state accordingly
   componentDidMount() {
     fetch("https://jsonplaceholder.typicode.com/users")
     .then(response => response.json())
@@ -20,6 +22,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      {/* Props and children props */}
+      <CardList name="Afif">
         {
           this.state.monsters.map( monster => 
             <h1 key={monster.id}>
@@ -27,6 +31,7 @@ class App extends Component {
             </h1>
           )
         }
+      </CardList>
       </div>
     )
   }
