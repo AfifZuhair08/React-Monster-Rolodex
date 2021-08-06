@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import { CardList } from './components/card-list/card-list.component'
-
+import { SearchBox } from './components/search-box/search-box.component'
+ 
 class App extends Component {
   constructor() {
     super();
@@ -25,7 +26,7 @@ class App extends Component {
 
     // destructuring state objects
     const { monsters, searchFields } = this.state;
-    
+
     // filter the array by referring to search fields everytimes its changing
     const filteredMonsters = monsters.filter(monster =>
       monster.name.toLowerCase().includes(searchFields.toLowerCase())
@@ -33,13 +34,12 @@ class App extends Component {
 
     return (
       <div className="App">
-        <input
-          // synthetic event (re-render everytimes fields input is changing)
-          onChange={e => this.setState({ searchFields: e.target.value })}
-          type="search"
-          placeholder="search monster by name"
+        {/* Handle changing values in the search field*/}
+        <SearchBox 
+          placeholder="search monsters"
+          handleChange={e => this.setState({ searchFields: e.target.value })}
         />
-        {/* Props and children props */}
+        {/* Listen to the changes made to the search*/}
         <CardList monsters={filteredMonsters} />
       </div>
     )
